@@ -54,6 +54,7 @@ class MoviesCollectionViewController: MB_BaseViewController,moviesDetailsProtoco
     
     func getListOfSearchedMovies(page: Int, keyword: String) {
         let requestModel = GetSearchedMovieList(withApiKey: APIKey, andPage: "\(page)", keyword: keyword)
+        showSpinner()
         requestModel.getListOfMovie {[weak self] (response, err, status) in
             guard  let weakSelf = self else {return}
             weakSelf.hideSpinner()
